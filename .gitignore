@@ -1,0 +1,32 @@
+# Ignore build output directories
+/build/
+/dist/
+
+# Ignore config files
+/config/
+
+# Ignore output files
+/output/
+
+# Ignore node modules
+/node_modules/
+
+# Ignore Python virtual environment
+/venv/
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+
+# Ignore log files
+*.log
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore environment files with sensitive information
+.env
+
+# Ignore notebooks
+*.ipynb
