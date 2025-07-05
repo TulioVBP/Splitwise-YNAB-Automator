@@ -121,7 +121,7 @@ class SplitwiseExpenses():
         
         # Initialize total borrowed amount
         total_borrowed = df['Share'].sum()
-        last_date = df['Date'].max()
+        first_date = df['Date'].min()
 
         # Modify the DataFrame to fit YNAB's schema
         df_ynab = pd.DataFrame({
@@ -135,7 +135,7 @@ class SplitwiseExpenses():
         
         # Add a final row for the total borrowed amount as an inflow
         total_row = pd.DataFrame({
-            'Date': [last_date],
+            'Date': [first_date],
             'Payee': ['Total Virtual Inflow'],
             'Category': [''],
             'Memo': ['Total amount borrowed'],
@@ -147,7 +147,7 @@ class SplitwiseExpenses():
         df_ynab = pd.concat([df_ynab, total_row], ignore_index=True)
         
         # Write the DataFrame to a CSV file at the output path
-        #os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
         df_ynab.to_csv(output_path, index=False)
 
         print(f"YNAB-compatible CSV file created at {output_path}")
