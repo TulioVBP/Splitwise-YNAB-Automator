@@ -17,11 +17,11 @@ class SplitwiseExpenses():
         api_key = config['splitwise_api']['api_key']
         self.s = Splitwise(consumer_key,consumer_secret,api_key=api_key)
         if update_after is not None:
-            self.expenses = self.s.getExpenses(limit = 50,
+            self.expenses = self.s.getExpenses(limit = 500,
                                             dated_after=config['splitwise_api']['expenses']['from_date'].isoformat(),
                                             updated_after=update_after.isoformat())
         else:
-            self.expenses = self.s.getExpenses(limit = 50,
+            self.expenses = self.s.getExpenses(limit = 500,
                                             dated_after=config['splitwise_api']['expenses']['from_date'].isoformat())
         self.update_after = update_after
 
