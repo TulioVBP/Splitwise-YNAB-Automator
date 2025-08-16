@@ -11,6 +11,12 @@ def get_latest_timestamp_for_user(output_dir: str, user_name: str):
     latest_file = None
 
     # Iterate through files in the output directory
+    if not os.path.exists(output_dir):
+        print(f"Output directory {output_dir} does not exist.")
+        return None, None
+    if not os.listdir(output_dir):
+        print(f"No files found in the output directory {output_dir}.")
+        return None, None
     for file_name in os.listdir(output_dir):
         # Match the file name with the regex pattern
         match = re.match(pattern, file_name)

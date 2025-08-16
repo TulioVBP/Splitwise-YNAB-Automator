@@ -4,6 +4,7 @@ import logging
 from splitwise_expenses import SplitwiseExpenses
 from read_yaml_config import read_yaml_config
 from get_latest_timestamp_for_user import get_latest_timestamp_for_user
+from ynab_expenses import add_expenses_to_ynab
 
 def main():
     # Config
@@ -25,6 +26,15 @@ def main():
     s.create_ynab_expense_file_from_df(user_name)
     
     print(f"Expenses retrieved for {user_name}")
+
+    # Add expenses to YNAB
+    ynab_token = config['ynab_api']['token']
+    budget_id = config['ynab_api']['budget_id']
+    account_id = config['ynab_api']['account_id']
+    categories = config['ynab_api']['categories']
+    expenses_df = s.get_expenses_dataframe()
+    response = add_expenses_to_ynab(ynab_token, budget_id, account_id, categories, expenses_df)
+    print(f"Expenses added to YNAB: {response}")
 
 if __name__ == "__main__":
     main() 
