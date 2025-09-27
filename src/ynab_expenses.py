@@ -27,7 +27,7 @@ class YNABExpenses:
         headers = self.headers
         transactions = []
         for _, row in expenses_df.iterrows():
-            amount = int(float(row['Amount']) * 1000)
+            amount = int(float(row['Share']) * 1000)
             parent_transaction = {
                 "account_id": self.account_id,
                 "date": str(row['Date'])[:10],

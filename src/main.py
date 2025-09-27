@@ -32,7 +32,7 @@ def main():
     ynab = YNABExpenses(ynab_token, budget_id, account_id, categories)
 
     # Adding expenses to YNAB
-    expenses_df = s.get_expenses_dataframe()
+    expenses_df = s.get_borrowed_expenses_by_user("Tulio")
     if expenses_df.empty:
         print("No expenses to add to YNAB.")
         return
@@ -41,7 +41,7 @@ def main():
     print(f"Expenses DataFrame:\n{expenses_df.head()}")
     for row in expenses_df.itertuples():
         print(f"Do you want to add the following expense to YNAB?")
-        print(f"Date: {row.Date}, Amount: {row.Amount}, Description: {row.Description}, Loaner: {row.Loaner}")
+        print(f"Date: {row.Date}, Amount: {row.Share}, Description: {row.Description}, Loaner: {row.Loaner}")
         user_input = input("Type 'yes' to proceed or 'no' to skip: ").strip().lower()
         if user_input != 'yes':
             print("Skipping this expense.")
