@@ -32,7 +32,7 @@ def main():
     ynab = YNABExpenses(ynab_token, budget_id, account_id, categories)
 
     # Adding expenses to YNAB
-    expenses_df = s.get_borrowed_expenses_by_user("Tulio")
+    expenses_df = s.get_borrowed_expenses_by_user(user_name)
     if expenses_df.empty:
         print("No expenses to add to YNAB.")
         return
