@@ -36,7 +36,7 @@ def main():
     if expenses_df.empty:
         print("No expenses to add to YNAB.")
         return
-    # 1. Ask if user wants to proceed with the following line
+    # 1. Ask if user wants to proceed with the following lineye
     print("Proceeding to add expenses to YNAB...")
     print(f"Expenses DataFrame:\n{expenses_df.head()}")
     for row in expenses_df.itertuples():
