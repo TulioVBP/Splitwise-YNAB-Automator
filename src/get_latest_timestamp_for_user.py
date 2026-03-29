@@ -4,7 +4,7 @@ from datetime import datetime
 
 def get_latest_timestamp_for_user(output_dir: str, user_name: str):
     # Define the regex pattern to match filenames with the given user name
-    pattern = rf".*_{user_name}_(\d{{8}})_(\d{{4}})\.csv$"
+    pattern = rf".*_{re.escape(user_name)}_(\d{{8}})_(\d{{4}})\.csv$"
     
     # Initialize variable to keep track of the latest timestamp
     latest_timestamp = None
